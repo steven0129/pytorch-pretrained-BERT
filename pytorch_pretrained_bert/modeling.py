@@ -699,7 +699,8 @@ class BertModelNoEmbed(BertPreTrainedModel):
     ```
     """
     def __init__(self, config):
-        super(BertModel, self).__init__(config)
+        super(BertModelNoEmbed, self).__init__(config)
+        self.embeddings = BertEmbeddings(config)
         self.encoder = BertEncoder(config)
         self.pooler = BertPooler(config)
         self.apply(self.init_bert_weights)
