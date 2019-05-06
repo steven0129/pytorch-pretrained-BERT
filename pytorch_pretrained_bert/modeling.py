@@ -708,7 +708,7 @@ class BertModelNoEmbed(BertPreTrainedModel):
     def forward(self, wordvec, attention_mask=None, output_all_encoded_layers=True):
         if attention_mask is None:
             attention_mask = torch.ones(wordvec.size(0), wordvec.size(1))
-            if wordvec.is_cuda(): attention_mask = attention_mask.cuda()
+            if wordvec.is_cuda: attention_mask = attention_mask.cuda()
 
         # We create a 3D attention mask from a 2D tensor mask.
         # Sizes are [batch_size, 1, 1, to_seq_length]
