@@ -720,7 +720,6 @@ class BertModelNoEmbed(BertPreTrainedModel):
     def __init__(self, config):
         super(BertModelNoEmbed, self).__init__(config)
         self.pe = PositionalEncoder(config.hidden_size)
-	    self.embeddings = BertEmbeddings(config)
         self.encoder = BertEncoder(config)
         self.pooler = BertPooler(config)
         self.apply(self.init_bert_weights)
