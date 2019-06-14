@@ -171,6 +171,13 @@ class WarmupLinearSchedule(_LRSchedule):
         return max((progress - 1.) / (self.warmup - 1.), 0.)
 
 
+class WarmupHalfLinearSchedule(_LRSchedule):
+    warn_t_total = True
+    def get_lr_(self, progress):
+        if progress < self.warmup:
+            return progress / self.warmup * 0.5
+        return max((progress - 1.) / (self.warmup - 1.) * 0.5, 0.)
+
 SCHEDULES = {
     None:       ConstantLR,
     "none":     ConstantLR,
